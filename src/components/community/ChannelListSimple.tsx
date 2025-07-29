@@ -3,13 +3,16 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { supabase } from "@/integrations/supabase/client";
-import { Hash } from "lucide-react";
+import { useAuth } from "@/hooks/useAuth";
+import { CreateChannelDialog } from "./CreateChannelDialog";
+import { Hash, Lock } from "lucide-react";
 
 interface Channel {
   id: string;
   name: string;
   description: string;
   color: string;
+  public: boolean;
   created_at: string;
 }
 
@@ -21,6 +24,7 @@ interface ChannelListSimpleProps {
 export const ChannelListSimple = ({ onChannelSelect, selectedChannelId }: ChannelListSimpleProps) => {
   const [channels, setChannels] = useState<Channel[]>([]);
   const [loading, setLoading] = useState(true);
+  const { profile } = useAuth();
 
   useEffect(() => {
     fetchChannels();
@@ -65,13 +69,20 @@ export const ChannelListSimple = ({ onChannelSelect, selectedChannelId }: Channe
   return (
     <Card>
       <CardHeader>
-        <CardTitle className="flex items-center gap-2">
-          <Hash className="h-5 w-5" />
-          Channels
-        </CardTitle>
-        <CardDescription>
-          Explore different topics and discussions
-        </CardDescription>
+        <div className="flex items-center justify-between">
+          <div>
+            <CardTitle className="flex items-center gap-2">
+              <Hash className="h-5 w-5" />
+              Channels
+            </CardTitle>
+            <CardDescription>
+              Explore different topics and discussions
+            </CardDescription>
+          </div>
+          {profile?.role === 'admin' && (
+            <CreateChannelDialog onChannelCreated={fetchChannels} />
+          )}
+        </div>
       </CardHeader>
       <CardContent>
         <div className="space-y-2">
@@ -87,9 +98,10 @@ export const ChannelListSimple = ({ onChannelSelect, selectedChannelId }: Channe
                   className="w-3 h-3 rounded-full mt-1 flex-shrink-0"
                   style={{ backgroundColor: channel.color }}
                 />
-                <div className="flex-1 min-w-0 text-left">
-                  <div className="font-medium text-sm truncate">
+                 <div className="flex-1 min-w-0 text-left">
+                  <div className="font-medium text-sm truncate flex items-center gap-2">
                     {channel.name}
+                    {!channel.public && <Lock className="h-3 w-3" />}
                   </div>
                   <div className="text-xs text-muted-foreground mt-1 line-clamp-2">
                     {channel.description}

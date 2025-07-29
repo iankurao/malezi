@@ -75,7 +75,7 @@ export const AuthForm = ({ onSuccess }: AuthFormProps) => {
   return (
     <Card className="w-full max-w-md mx-auto">
       <CardHeader>
-        <CardTitle>Welcome to IncluLearnKE</CardTitle>
+        <CardTitle>Welcome to Malezi Community</CardTitle>
         <CardDescription>
           Join our community of educators working towards inclusive education
         </CardDescription>

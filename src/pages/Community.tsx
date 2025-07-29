@@ -53,7 +53,7 @@ const Community = () => {
               </Link>
             </Button>
             <Separator orientation="vertical" className="h-6" />
-            <h1 className="text-lg font-semibold">IncluLearnKE Community</h1>
+            <h1 className="text-lg font-semibold">Malezi Community</h1>
           </div>
           
           <div className="flex items-center space-x-4">

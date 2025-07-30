@@ -115,6 +115,51 @@ export type Database = {
         }
         Relationships: []
       }
+      resources: {
+        Row: {
+          category: string
+          created_at: string
+          created_by: string
+          description: string | null
+          download_count: number
+          file_type: string
+          file_url: string | null
+          id: string
+          is_featured: boolean
+          tags: string[] | null
+          title: string
+          updated_at: string
+        }
+        Insert: {
+          category?: string
+          created_at?: string
+          created_by: string
+          description?: string | null
+          download_count?: number
+          file_type: string
+          file_url?: string | null
+          id?: string
+          is_featured?: boolean
+          tags?: string[] | null
+          title: string
+          updated_at?: string
+        }
+        Update: {
+          category?: string
+          created_at?: string
+          created_by?: string
+          description?: string | null
+          download_count?: number
+          file_type?: string
+          file_url?: string | null
+          id?: string
+          is_featured?: boolean
+          tags?: string[] | null
+          title?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
       topics: {
         Row: {
           channel_id: string

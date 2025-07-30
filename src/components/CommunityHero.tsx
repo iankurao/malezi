@@ -28,8 +28,14 @@ export const CommunityHero = () => {
               </Link>
             </Button>
             <Button asChild variant="community" size="lg" className="text-lg px-8 py-4">
-              <Link to="/signup">
+              <Link to="/resources">
                 <BookOpen className="mr-2 h-5 w-5" />
+                Resource Library
+              </Link>
+            </Button>
+            <Button asChild variant="outline" size="lg" className="text-lg px-8 py-4 bg-white/10 border-white/20 text-white hover:bg-white/20">
+              <Link to="/signup">
+                <Globe className="mr-2 h-5 w-5" />
                 Get Started
               </Link>
             </Button>

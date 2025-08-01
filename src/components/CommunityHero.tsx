@@ -16,8 +16,7 @@ export const CommunityHero = () => {
           </h1>
 
           <p className="text-xl md:text-2xl leading-relaxed opacity-95 max-w-3xl mx-auto">
-            Empowering inclusive education across Kenya through collaborative learning,
-            shared resources, and community-driven innovation.
+            Enlightening Parenting in the Digital Age and Understanding the Digital Uproar and Strengthening Parent-Child Communication.
           </p>
 
           <div className="flex flex-wrap justify-center gap-4 pt-8">

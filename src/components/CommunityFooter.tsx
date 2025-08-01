@@ -112,7 +112,7 @@ export const CommunityFooter = () => {
             © 2024 Malezi Community. All rights reserved.
           </div>
           <div className="flex items-center space-x-1 text-sm text-muted-foreground">
-            <span>Made for inclusive education in Kenya</span>
+            <span>Made for Digital Parenting in Kenya</span>
           </div>
           <div className="flex space-x-6 text-sm">
             <Link to="/privacy" className="text-muted-foreground hover:text-foreground transition-colors">

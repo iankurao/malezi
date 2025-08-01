@@ -1,24 +1,28 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { MessageSquare, Calendar, BookOpen, Users, Award, Lightbulb } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const features = [
   {
     icon: MessageSquare,
     title: "Discussion Forums",
     description: "Engage in meaningful conversations about inclusive education practices and challenges.",
-    color: "text-blue-600"
+    color: "text-blue-600",
+    link: "/community"
   },
   {
     icon: Calendar,
     title: "Community Events",
     description: "Join workshops, webinars, and local meetups to connect with fellow educators.",
-    color: "text-green-600"
+    color: "text-green-600",
+    link: "/events"
   },
   {
     icon: BookOpen,
     title: "Resource Library",
     description: "Access curated educational materials, tools, and best practices for inclusive learning.",
-    color: "text-purple-600"
+    color: "text-purple-600",
+    link: "/resources"
   },
   {
     icon: Users,
@@ -53,17 +57,19 @@ export const CommunityFeatures = () => {
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {features.map((feature, index) => (
-            <Card key={index} className="group hover:shadow-lg transition-all duration-300">
-              <CardContent className="p-6">
-                <div className="flex items-center mb-4">
-                  <div className={`p-3 rounded-lg bg-muted ${feature.color}`}>
-                    <feature.icon className="h-6 w-6" />
+            <Link key={index} to={feature.link || "#"}>
+              <Card className="group hover:shadow-lg transition-all duration-300 cursor-pointer">
+                <CardContent className="p-6">
+                  <div className="flex items-center mb-4">
+                    <div className={`p-3 rounded-lg bg-muted ${feature.color}`}>
+                      <feature.icon className="h-6 w-6" />
+                    </div>
                   </div>
-                </div>
-                <h3 className="text-xl font-semibold mb-2">{feature.title}</h3>
-                <p className="text-muted-foreground">{feature.description}</p>
-              </CardContent>
-            </Card>
+                  <h3 className="text-xl font-semibold mb-2">{feature.title}</h3>
+                  <p className="text-muted-foreground">{feature.description}</p>
+                </CardContent>
+              </Card>
+            </Link>
           ))}
         </div>
       </div>

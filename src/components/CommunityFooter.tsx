@@ -12,7 +12,7 @@ export const CommunityFooter = () => {
           <div className="space-y-4">
             <h3 className="text-2xl font-bold text-primary">Malezi Community</h3>
             <p className="text-muted-foreground">
-              Empowering inclusive education across Kenya through collaborative learning and community-driven innovation.
+              Enlightening Parenting in the Digital Age and Understanding the Digital Uproar and Strengthening Parent-Child Communication.
             </p>
             <div className="flex space-x-3">
               <Button variant="ghost" size="sm" className="h-8 w-8 p-0">

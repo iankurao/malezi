@@ -1,11 +1,39 @@
 import { Button } from "@/components/ui/button";
-import { Users, BookOpen, Globe } from "lucide-react";
+import { Users, BookOpen, Globe, Settings } from "lucide-react";
 import { Link } from "react-router-dom";
+import { useAuth } from "@/hooks/useAuth";
 
 export const CommunityHero = () => {
+  const { profile } = useAuth();
+  const isAdmin = profile?.role === 'admin';
+
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-primary via-community to-hero">
-      <div className="relative z-10 container mx-auto px-4 text-center text-white">
+    <section className="relative min-h-screen flex flex-col overflow-hidden bg-gradient-to-br from-primary via-community to-hero">
+      {/* Navigation Header */}
+      <div className="relative z-10 container mx-auto px-4 py-4">
+        <div className="flex justify-between items-center">
+          <Link to="/" className="text-white font-bold text-xl">
+            E-Aware Parenting
+          </Link>
+          <div className="flex gap-2">
+            {isAdmin && (
+              <Button asChild variant="outline" size="sm" className="bg-white/10 border-white/20 text-white hover:bg-white/20">
+                <Link to="/admin">
+                  <Settings className="mr-1 h-4 w-4" />
+                  Admin
+                </Link>
+              </Button>
+            )}
+            <Button asChild variant="outline" size="sm" className="bg-white/10 border-white/20 text-white hover:bg-white/20">
+              <Link to="/signup">Sign Up</Link>
+            </Button>
+          </div>
+        </div>
+      </div>
+
+      {/* Hero Content */}
+      <div className="flex-1 flex items-center justify-center">
+        <div className="relative z-10 container mx-auto px-4 text-center text-white">
         <div className="max-w-4xl mx-auto space-y-8">
           <h1 className="text-5xl md:text-7xl font-bold leading-tight">
             Welcome to{" "}
@@ -54,6 +82,7 @@ export const CommunityHero = () => {
               <div className="text-sm opacity-90">Counties</div>
             </div>
           </div>
+        </div>
         </div>
       </div>
     </section>

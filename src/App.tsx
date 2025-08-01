@@ -8,6 +8,7 @@ import Index from "./pages/Index";
 import Community from "./pages/Community";
 import Resources from "./pages/Resources";
 import Events from "./pages/Events";
+import AdminDashboard from "./pages/AdminDashboard";
 import Signup from "./pages/Signup";
 import NotFound from "./pages/NotFound";
 
@@ -25,6 +26,7 @@ const App = () => (
             <Route path="/community" element={<Community />} />
             <Route path="/resources" element={<Resources />} />
             <Route path="/events" element={<Events />} />
+            <Route path="/admin" element={<AdminDashboard />} />
             <Route path="/signup" element={<Signup />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />

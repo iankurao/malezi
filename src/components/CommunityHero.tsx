@@ -15,7 +15,17 @@ export const CommunityHero = () => {
           <Link to="/" className="text-white font-bold text-xl">
             E-Aware Parenting
           </Link>
-          <div className="flex gap-2">
+          <div className="flex items-center gap-3">
+            {user && (
+              <div className="flex items-center gap-2">
+                <span className="text-white text-sm">Welcome {profile?.full_name || 'User'}!</span>
+                <Button asChild variant="outline" size="sm" className="bg-white/10 border-white/20 text-white hover:bg-white/20 p-2">
+                  <Link to="/profile">
+                    <User className="h-4 w-4" />
+                  </Link>
+                </Button>
+              </div>
+            )}
             {isAdmin && (
               <Button asChild variant="outline" size="sm" className="bg-white/10 border-white/20 text-white hover:bg-white/20">
                 <Link to="/admin">
@@ -24,17 +34,11 @@ export const CommunityHero = () => {
                 </Link>
               </Button>
             )}
-            {user && (
+            {!user && (
               <Button asChild variant="outline" size="sm" className="bg-white/10 border-white/20 text-white hover:bg-white/20">
-                <Link to="/profile">
-                  <User className="mr-1 h-4 w-4" />
-                  Profile
-                </Link>
+                <Link to="/signup">Sign Up</Link>
               </Button>
             )}
-            <Button asChild variant="outline" size="sm" className="bg-white/10 border-white/20 text-white hover:bg-white/20">
-              <Link to="/signup">Sign Up</Link>
-            </Button>
           </div>
         </div>
       </div>

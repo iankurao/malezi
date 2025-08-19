@@ -7,7 +7,7 @@ export type Json =
   | Json[]
 
 export type Database = {
-  // Allows to automatically instanciate createClient with right options
+  // Allows to automatically instantiate createClient with right options
   // instead of createClient<Database, { PostgrestVersion: 'XX' }>(URL, KEY)
   __InternalSupabase: {
     PostgrestVersion: "13.0.4"
@@ -43,6 +43,86 @@ export type Database = {
           id?: string
           name?: string
           public?: boolean
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      event_registrations: {
+        Row: {
+          event_id: string
+          id: string
+          registered_at: string
+          user_id: string
+        }
+        Insert: {
+          event_id: string
+          id?: string
+          registered_at?: string
+          user_id: string
+        }
+        Update: {
+          event_id?: string
+          id?: string
+          registered_at?: string
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "event_registrations_event_id_fkey"
+            columns: ["event_id"]
+            isOneToOne: false
+            referencedRelation: "events"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      events: {
+        Row: {
+          created_at: string
+          created_by: string
+          current_participants: number
+          description: string | null
+          end_date: string
+          event_type: string
+          id: string
+          image_url: string | null
+          is_featured: boolean
+          location: string | null
+          max_participants: number | null
+          start_date: string
+          title: string
+          updated_at: string
+        }
+        Insert: {
+          created_at?: string
+          created_by: string
+          current_participants?: number
+          description?: string | null
+          end_date: string
+          event_type?: string
+          id?: string
+          image_url?: string | null
+          is_featured?: boolean
+          location?: string | null
+          max_participants?: number | null
+          start_date: string
+          title: string
+          updated_at?: string
+        }
+        Update: {
+          created_at?: string
+          created_by?: string
+          current_participants?: number
+          description?: string | null
+          end_date?: string
+          event_type?: string
+          id?: string
+          image_url?: string | null
+          is_featured?: boolean
+          location?: string | null
+          max_participants?: number | null
+          start_date?: string
+          title?: string
           updated_at?: string
         }
         Relationships: []

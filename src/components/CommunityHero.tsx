@@ -1,10 +1,10 @@
 import { Button } from "@/components/ui/button";
-import { Users, BookOpen, Globe, Settings } from "lucide-react";
+import { Users, BookOpen, Globe, Settings, User } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useAuth } from "@/hooks/useAuth";
 
 export const CommunityHero = () => {
-  const { profile } = useAuth();
+  const { profile, user } = useAuth();
   const isAdmin = profile?.role === 'admin';
 
   return (
@@ -21,6 +21,14 @@ export const CommunityHero = () => {
                 <Link to="/admin">
                   <Settings className="mr-1 h-4 w-4" />
                   Admin
+                </Link>
+              </Button>
+            )}
+            {user && (
+              <Button asChild variant="outline" size="sm" className="bg-white/10 border-white/20 text-white hover:bg-white/20">
+                <Link to="/profile">
+                  <User className="mr-1 h-4 w-4" />
+                  Profile
                 </Link>
               </Button>
             )}
